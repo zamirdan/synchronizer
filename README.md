@@ -1,2 +1,2 @@
 # synchronizer
-Write async code in a sync style with generators
+Write an async code in a sync style with js generators
