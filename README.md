@@ -1,6 +1,8 @@
 # syncme
 Write async code in a sync style with js generators.
 
+## How to use:
+npm install syncme
 
 ## Example of use:
 
