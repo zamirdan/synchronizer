@@ -11,11 +11,17 @@ var fs = require('fs');
 var syncme = require('syncme');
 
 //syncme.sync - use to warp call to async code the
+
 //the yield call will puase the execution, until fs.writeFile  finished
+
 //result is object with 3 fields error, result, args {error:error, result:result args:args}
+
 //syncme.sync expects to get as paramters an async func to call the the pramater to send to this function.
+
 //syncme.sync expects that the async func last pramamter is a callcabk node style (err, result)
+
 //any way all the callcabk paramters can be found in result.args... just for case....
+
 //just look the code....
 
  function* syncFile (){
@@ -52,7 +58,10 @@ You can also cache function using "syncme.createSyncFunction"
 Example: 
 var writeFile = syncme.createSyncFunction(fs.writeFile);
 
-Than you can replace:  
+Than you can replace:
+
 var FileCreateResult = yield syncme.sync(fs.writeFile,fileName , textToWrite);
+
 with: 
+
 var FileCreateResult = writeFile(fileName , textToWrite);
