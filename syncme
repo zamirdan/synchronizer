@@ -31,6 +31,16 @@ function sync(func,theRest ){
     return  {func:func, param:args } ;
 }
 
+function createSyncFunction(func) {
+
+    return function(){
+        var args = argumentsToArray( arguments);
+        return  {func:func, param:args } ;
+    }
+}
+
+
+
 function argumentsToArray(args){
 
     var array = (args.length === 1?[args[0]]:Array.apply(null, args));
@@ -40,6 +50,7 @@ function argumentsToArray(args){
 
 module.exports.sync = sync;
 module.exports.run = run;
+module.exports.createSyncFunction = createSyncFunction;
 
 
 
