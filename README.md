@@ -1,10 +1,8 @@
 # synchronizer
 Write async code in a sync style with js generators.
 
-How to use?
-Well... just look at the exmaple....
 
-Example of use:
+# Example of use:
 
 var fs = require('fs');
 var synchronizer = require('synchronizer');
