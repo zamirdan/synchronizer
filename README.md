@@ -25,20 +25,24 @@ var synchronizer = require('synchronizer');
  function* syncFile (){
  
   var fileName = 'test.txt';
+  
   var textToWrite = 'Hi from synchronizer';
   
   var result = yield synchronizer.sync(fs.writeFile,fileName , textToWrite);
+  
   var readFileResult = yield synchronizer.sync(fs.readFile, fileName);
 
   //print file text
+  
   console.log(readFileResult.result.toString());
   
   //delete the file
+  
   var removeFileResult = yield synchronizer.sync(fs.unlink, fileName);
-  if(result.error){
-            throw new Error (result.error);
-        }
+  
+  if(result.error){  throw new Error (result.error);}
  }
  
  // run the generator....
+ 
   synchronizer.run(syncFile());
