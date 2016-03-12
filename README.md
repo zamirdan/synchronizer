@@ -7,7 +7,6 @@ Write async code in a sync style with js generators.
 var fs = require('fs');
 var synchronizer = require('synchronizer');
 
-
 //synchronizer.sync - use to warp call to async code the
 //the yield call will puase the execution, until fs.writeFile  finished
 //result is object with 3 fields error, result, args {error:error, result:result args:args}
