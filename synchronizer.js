@@ -17,8 +17,9 @@ function syncRunner(gen,val) {
 
     var args = context.param.slice();
     args.push(function () {
-        var args = argumentsToArray( arguments);
-        syncRunner(gen, args);
+     //   var args = argumentsToArray( arguments);
+        var valToSend = {error:arguments[0],result:arguments[1]};
+        syncRunner(gen, valToSend);
     });
     context.func.apply(this, args);
 }
