@@ -35,6 +35,3 @@ var synchronizer = require('synchronizer');
  
  // run the generator....
   synchronizer.run(syncFile());
- 
- 
- 
