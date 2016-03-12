@@ -1,4 +1,4 @@
-# synchronizer
+# syncme
 Write async code in a sync style with js generators.
 
 
@@ -6,17 +6,17 @@ Write async code in a sync style with js generators.
 
 var fs = require('fs');
 
-var synchronizer = require('synchronizer');
+var syncme = require('syncme');
 
-//synchronizer.sync - use to warp call to async code the
+//syncme.sync - use to warp call to async code the
 
 //the yield call will puase the execution, until fs.writeFile  finished
 
 //result is object with 3 fields error, result, args {error:error, result:result args:args}
 
-//Synchronizer.sync expects to get as paramters an async func to call the the pramater to send to this function.
+//syncme.sync expects to get as paramters an async func to call the the pramater to send to this function.
 
-//Synchronizer.sync expects that the async func last pramamter is a callcabk node style (err, result)
+//syncme.sync expects that the async func last pramamter is a callcabk node style (err, result)
 
 //any way all the callcabk paramters can be found in result.args... just for case....
 
@@ -26,11 +26,11 @@ var synchronizer = require('synchronizer');
  
   var fileName = 'test.txt';
   
-  var textToWrite = 'Hi from synchronizer';
+  var textToWrite = 'Hi from syncme';
   
-  var result = yield synchronizer.sync(fs.writeFile,fileName , textToWrite);
+  var result = yield syncme.sync(fs.writeFile,fileName , textToWrite);
   
-  var readFileResult = yield synchronizer.sync(fs.readFile, fileName);
+  var readFileResult = yield syncme.sync(fs.readFile, fileName);
 
   //print file text
   
@@ -38,11 +38,11 @@ var synchronizer = require('synchronizer');
   
   //delete the file
   
-  var removeFileResult = yield synchronizer.sync(fs.unlink, fileName);
+  var removeFileResult = yield syncme.sync(fs.unlink, fileName);
   
   if(result.error){  throw new Error (result.error);}
  }
  
  // run the generator....
  
-  synchronizer.run(syncFile());
+  syncme.run(syncFile());
