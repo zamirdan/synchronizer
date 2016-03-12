@@ -2,37 +2,37 @@ var la =require('lazy-ass');
 var check = require('check-more-types');
 var fs = require('fs');
 
-describe('synchronizer', function () {
-    var synchronizer;
+describe('syncme', function () {
+    var syncme;
     beforeEach(function () {
-        synchronizer = require('../synchronizer');
+        syncme = require('../syncme');
     });
-   // it('is an object', () => console.assert(typeof synchronizer === 'object'));
-    it('is an object', () => la(check.object(synchronizer), 'synchronizer should be an object', synchronizer));
-    it('has function run', () => la(check.fn(synchronizer.run), 'synchronizer should be an object', synchronizer));
-    it('has function sync', () => la(check.fn(synchronizer.sync), 'synchronizer should be an object', synchronizer));
-    it('is using fs async methods as sync methods', (done) => testSyncFS(synchronizer,done));
+   // it('is an object', () => console.assert(typeof syncme === 'object'));
+    it('is an object', () => la(check.object(syncme), 'syncme should be an object', syncme));
+    it('has function run', () => la(check.fn(syncme.run), 'syncme should be an object', syncme));
+    it('has function sync', () => la(check.fn(syncme.sync), 'syncme should be an object', syncme));
+    it('is using fs async methods as sync methods', (done) => testSyncFS(syncme,done));
 
 });
 
 
 
-function testSyncFS(synchronizer,done){
+function testSyncFS(syncme,done){
 
     function* syncFile (){
 
         var timesStamp  = new Date().getMilliseconds()
         var textToWrite = "test me "+ timesStamp;
-        var fileName = 'test/'+timesStamp+'.txt';
+        var fileName = 'test/syncme'+timesStamp+'.txt';
 
-        var FileCreateResult = yield synchronizer.sync(fs.writeFile,fileName , textToWrite);
+        var FileCreateResult = yield syncme.sync(fs.writeFile,fileName , textToWrite);
        checkResult(FileCreateResult);
 
 
-        var fileStatResult = yield synchronizer.sync(fs.stat, fileName);
+        var fileStatResult = yield syncme.sync(fs.stat, fileName);
         checkResult(FileCreateResult);
 
-        var readFileResult = yield synchronizer.sync(fs.readFile, fileName);
+        var readFileResult = yield syncme.sync(fs.readFile, fileName);
         checkResult(readFileResult);
 
         var textFromFile = readFileResult.result.toString();
@@ -40,8 +40,8 @@ function testSyncFS(synchronizer,done){
             throw  new Error("test fail text is not match");
         }
 
-        //var removeFileResult = yield synchronizer.sync(fs.unlink, fileName);
-     //   checkResult(removeFileResult);
+        var removeFileResult = yield syncme.sync(fs.unlink, fileName);
+        checkResult(removeFileResult);
 
        done();
 
@@ -52,7 +52,7 @@ function testSyncFS(synchronizer,done){
         }
     }
 
-    synchronizer.run(syncFile());
+    syncme.run(syncFile());
 
 
 }
