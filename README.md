@@ -9,10 +9,15 @@ var fs = require('fs');
 var synchronizer = require('synchronizer');
 
 //synchronizer.sync - use to warp call to async code the
+
 //the yield call will puase the execution, until fs.writeFile  finished
+
 //result is object with 3 fields error, result, args {error:error, result:result args:args}
+
 //Synchronizer.sync expects to get as paramters an async func to call the the pramater to send to this function.
+
 //Synchronizer.sync expects that the async func last pramamter is a callcabk node style (err, result)
+
 //any way all the callcabk paramters can be found in result.args... just for case....
 
 //just look the code....
