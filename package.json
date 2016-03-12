@@ -1,0 +1,18 @@
+{
+  "name": "synchronizer",
+  "version": "1.0.0",
+  "description": "this module will help tun asyc code as it was sync, inside generator function",
+  "main": "synchronizer.js",
+  "scripts": {
+    "test": "mocha -R spec test/*-spec.js",
+    "watch": "npm test -- --watch"
+  },
+  "pre-commit": "npm test",
+  "author": "Dan Zamir <zamirdan@gmail.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "check-more-types": "^2.12.0",
+    "lazy-ass": "^1.4.0",
+    "mocha": "^2.4.5"
+  }
+}
