@@ -1,7 +1,7 @@
 {
   "name": "syncme",
   "version": "1.0.1",
-  "description": "this module will help tun asyc code as it was sync, inside generator function",
+  "description": "this module will help you asyc code as it was sync, inside generator function",
   "main": "syncme.js",
   "scripts": {
     "test": "mocha -R spec test/*-spec.js",
